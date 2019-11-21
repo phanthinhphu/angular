@@ -1,0 +1,154 @@
+<div class="col-5">
+    <h3 class="mt-3"> {{title}} BOOK </h3>
+
+    <form class="mt-4" 
+    [formGroup]="bookForm" 
+    (ngSubmit)="saveBook()"
+    >
+        <div class="form-group">
+
+            <label for="iname">Name</label>
+            <input type="text" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': (name.invalid && (name.dirty || name.touched))}"
+                formControlName="name"
+            >
+
+            <div 
+                class="invalid-feedback" 
+                *ngIf="name.hasError('required') && (name.dirty || name.touched)"
+            >
+               Required name.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+
+                <input matInput 
+                    [matDatepicker]="picker" 
+                    placeholder="Choose a date publisher" 
+                    formControlName="datePublish"
+                >
+
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>
+                        keyboard_arrow_down
+                    </mat-icon>
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-error *ngIf="datePublish.hasError('required')">
+                    Required date publisher.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+
+            <label for="iname">Price</label>
+            <input type="number" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': (price.invalid && (price.dirty || price.touched))}"
+                formControlName="price"
+            >
+
+            <div 
+                class="invalid-feedback" 
+                *ngIf="price.hasError('required') && (price.dirty || price.touched)"
+            >
+                Required price.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Author</label>
+            <select 
+                class="form-control" 
+                formControlName="author"
+                [ngClass]="{'is-invalid': (author.invalid && (author.dirty || author.touched))}"
+            >
+                <option
+                    *ngFor="let option of authors"
+                    [ngValue]="option._id"
+                >
+                    {{option.name}}
+                </option>
+            </select>
+
+        <div 
+            class="invalid-feedback" 
+            *ngIf="author.hasError('required') && (author.dirty || author.touched)"
+        >
+            Required author.
+        </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Publisher</label>
+            <select 
+                class="form-control" 
+                formControlName="publisher"
+                [ngClass]="{'is-invalid': (publisher.invalid && (publisher.dirty || publisher.touched))}"
+            >
+                <option
+                    *ngFor="let option of publishers"
+                    [ngValue]="option._id"
+                >
+                    {{option.name}}
+                </option>
+            </select>
+
+        <div 
+            class="invalid-feedback" 
+            *ngIf="publisher.hasError('required') && (publisher.dirty || publisher.touched)"
+        >
+            Required publihser.
+        </div>
+
+        </div>
+
+        <div class="form-group">
+            <label>Type Book</label>
+            <select 
+                class="form-control" 
+                formControlName="typeBooks"
+                multiple
+                [ngClass]="{'is-invalid': (typeBook.invalid && (typeBook.dirty || typeBook.touched))}"
+            >
+                <option
+                    *ngFor="let option of typeBooks"
+                    [ngValue]="option._id"
+                >
+                    {{option.name}}
+                </option>
+            </select>
+
+        <div 
+            class="invalid-feedback" 
+            *ngIf="typeBook.hasError('required') && (typeBook.dirty || typeBook.touched)"
+        >
+            Required type book.
+        </div>
+        </div>
+
+        <div class="text-center">
+            <a 
+                type="submit" 
+                class="btn btn-primary mr-3" 
+                [routerLink]="['/book']"
+            >
+                Come back
+            </a>
+
+            <button 
+                type="submit" 
+                class="btn btn-success" 
+                [disabled]="bookForm.invalid">
+                Save
+            </button>
+        </div>
+    </form>
+</div>

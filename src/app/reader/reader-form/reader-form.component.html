@@ -1,0 +1,110 @@
+<div class="col-5">
+
+    <h3 class="mt-3"> {{title}} READER</h3>
+
+    <form 
+        class="mt-4" 
+        [formGroup]="readerForm" 
+        (ngSubmit)="saveReader()" 
+    >
+        <div class="form-group">
+            <label for="iname">Name</label>
+
+            <input type="text" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': (name.invalid && (name.dirty || name.touched))}"
+                formControlName="name">
+
+            <div 
+                class="invalid-feedback" 
+                *ngIf="name.hasError('required') && (name.dirty || name.touched)"
+            >
+               Required name.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="iname">Address</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                [ngClass]="{'is-invalid': (address.invalid && (address.dirty || address.touched))}"
+                formControlName="address"
+            >
+
+            <div 
+                class="invalid-feedback" 
+                *ngIf="address.hasError('required') && (address.dirty || address.touched)"
+            >
+               Required name.
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <mat-form-field class="example-full-width">
+                <input matInput 
+                    [matDatepicker]="picker" 
+                    placeholder="Choose a birthDay" 
+                    formControlName="birthDay"
+                >
+
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>
+                        keyboard_arrow_down
+                    </mat-icon>
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-error *ngIf="birthDay.hasError('required')">
+                    Required birth day.
+                </mat-error>
+
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+
+            <input type="text" 
+                class="form-control"   
+                formControlName="phone"
+                [ngClass]="{'is-invalid': phone.invalid && ( phone.touched || phone.dirty )}"
+            >
+        
+            <div 
+                class="invalid-feedback" 
+                *ngIf="phone.hasError('required') && (phone.dirty || phone.touched)"
+            >
+               Required name.
+            </div>
+
+            <div 
+                class="invalid-feedback" 
+                *ngIf="phone.hasError('checkNumber') && (phone.dirty || phone.touched)"
+            >
+               Phone invalid;
+            </div>
+
+        </div>
+
+        <div class="text-center">
+            <a 
+                type="submit" 
+                class="btn btn-primary mr-3" 
+                [routerLink]="['/reader']"
+            >
+                Come back
+            </a>
+
+            <button 
+                type="submit" 
+                class="btn btn-success" 
+                [disabled]="readerForm.invalid">
+                Save
+            </button>
+        </div>
+    </form>
+</div>
+

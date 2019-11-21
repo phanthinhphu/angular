@@ -1,0 +1,94 @@
+<div class="col-5">
+    <h3 class="mt-3"> CREATE CARD</h3>
+
+    <form class="mt-4" [formGroup]="cardForm" (ngSubmit)="saveCard()" >
+
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <input matInput 
+                    [matDatepicker]="pickerStart" 
+                    placeholder="Choose a start date" 
+                    formControlName="startDate"
+                    [min] = 'increteDay'
+                    (dateInput)='onChangeStartDate()'
+                    (datechange) = 'onChangeStartDate()'
+                >
+
+                <mat-datepicker-toggle matSuffix [for]="pickerStart">
+                    <mat-icon matDatepickerToggleIcon>
+                        keyboard_arrow_down
+                    </mat-icon>
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #pickerStart></mat-datepicker>
+
+                <mat-error *ngIf="startDate.hasError('required')">
+                    Required start date.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+                <input matInput 
+                [matDatepicker]="picker" 
+                placeholder="Choose a birthDay" 
+                formControlName="endDate"
+                [min] = 'minDate'
+                >
+
+                <mat-datepicker-toggle matSuffix [for]="picker">
+                    <mat-icon matDatepickerToggleIcon>
+                        keyboard_arrow_down
+                    </mat-icon>
+                </mat-datepicker-toggle>
+
+                <mat-datepicker #picker></mat-datepicker>
+
+                <mat-error *ngIf="endDate.hasError('required')">
+                    Required end date.
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+            <label>Reader</label>
+            <select 
+            class="form-control" 
+            formControlName="reader"
+            >
+                <option
+                *ngFor="let option of readers"
+                [ngValue]="option._id"
+                >
+                    {{option.name}} &nbsp;&nbsp;&nbsp;&nbsp; {{option.phone}}
+                </option>
+              </select>
+        </div>
+
+        <div class="form-group">
+            <label>Note</label>
+
+            <input type="text" 
+            class="form-control"   
+            formControlName="note">
+
+        </div>
+
+        <div class="text-center">
+            <a 
+                type="submit" 
+                class="btn btn-primary mr-3" 
+                [routerLink]="['/card']">
+                Come back
+            </a>
+
+            <button 
+                type="submit" 
+                class="btn btn-success" 
+                [disabled]="cardForm.invalid">
+                Save
+            </button>
+        </div>
+    </form>
+</div>
