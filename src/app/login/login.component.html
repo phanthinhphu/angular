@@ -48,14 +48,14 @@
                 class="invalid-feedback" 
                 *ngIf="password.hasError('maxlength') && (password.dirty || password.touched)"
             >
-                Max length.
+                Max length 50.
             </div>
 
             <div 
                 class="invalid-feedback" 
                 *ngIf="password.hasError('minlength') && (password.dirty || password.touched)"
             >
-                Min length.
+                Min length 10.
             </div>
         </div>
         <button 

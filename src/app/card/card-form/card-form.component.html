@@ -9,7 +9,7 @@
                     [matDatepicker]="pickerStart" 
                     placeholder="Choose a start date" 
                     formControlName="startDate"
-                    [min] = 'tomorrow'
+                    [min] = 'minDate'
                     (dateInput)='onChangeStartDate()'
                     (datechange) = 'onChangeStartDate()'
                 >
@@ -34,7 +34,7 @@
                 [matDatepicker]="picker" 
                 placeholder="Choose a birthDay" 
                 formControlName="endDate"
-                [min] = 'minDate'
+                [min] = 'tomorrow'
                 >
 
                 <mat-datepicker-toggle matSuffix [for]="picker">
