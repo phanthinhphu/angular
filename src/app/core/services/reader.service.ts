@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Reader } from '../models/reader.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/reader/';
+const URL = domain+'/reader/';
 
 @Injectable({
     providedIn: 'root'

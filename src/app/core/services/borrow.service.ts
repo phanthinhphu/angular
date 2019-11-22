@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { Borrow } from '../models/borrow.model';
 import { Card } from '../models/card.model';
 import { Book } from '../models/book.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/borrow';
+const URL = domain + '/borrow';
 
 @Injectable({
     providedIn: 'root'

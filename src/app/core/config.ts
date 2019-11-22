@@ -1,0 +1,1 @@
+export const domain = 'https://phuz.herokuapp.com'

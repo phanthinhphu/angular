@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { Card } from '../models/card.model';
 import { Reader } from '../models/reader.model';
+import { domain } from '../config';
 
-
-const URL = 'http://localhost:3000/card';
+const URL = domain + '/card';
 
 Injectable({
     providedIn: 'root'
@@ -20,8 +19,8 @@ export class CardService {
         return this.http.get<Card[]>(URL);
     }
 
-    getComboboxReader(): Observable<Reader[]>{
-        return this.http.get<Reader[]>(URL+'/comboboxreader');
+    getComboboxReader(): Observable<Reader[]> {
+        return this.http.get<Reader[]>(URL + '/comboboxreader');
     }
 
     getCardById(_id: string): Observable<Card> {

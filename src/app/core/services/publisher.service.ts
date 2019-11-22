@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { Publisher } from '../models/publisher.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/publisher/';
+const URL = domain+'/publisher/';
 
 @Injectable({
     providedIn: 'root'

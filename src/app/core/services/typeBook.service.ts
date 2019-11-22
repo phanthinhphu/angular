@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { TypeBook } from '../models/typebook.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/typebook';
+const URL = domain + '/typebook';
 
 @Injectable({
   providedIn: 'root'

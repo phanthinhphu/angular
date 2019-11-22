@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Login } from '../models/login.model';
 import { User } from '../models/user.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/user';
+const URL = domain + '/user';
+
 const token = localStorage.getItem('token');
-const headers = new HttpHeaders({  
-    'Content-Type':  'application/json',
-    token 
+const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    token
 });
 
 @Injectable({
@@ -46,11 +48,11 @@ export class UserService {
     checkToken(token): Observable<User> {
         const httpOptions = {
             headers: new HttpHeaders({
-              'Content-Type':  'application/json',
-              'token': token
+                'Content-Type': 'application/json',
+                'token': token
             })
-          };
-        return this.http.get<User>(`${URL}/checktoken`,httpOptions)
+        };
+        return this.http.get<User>(`${URL}/checktoken`, httpOptions)
     }
 
 }

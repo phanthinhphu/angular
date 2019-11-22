@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
-
+import { Observable, from } from 'rxjs';
 import { Author } from '../models/author.model';
+import { domain } from '../config';
 
-const URL = 'http://localhost:3000/author';
+const URL = domain + '/author';
 const token = localStorage.getItem('token');
 const headers = new HttpHeaders({ token });
 
