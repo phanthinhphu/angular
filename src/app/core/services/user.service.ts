@@ -7,12 +7,6 @@ import { domain } from '../config';
 
 const URL = domain + '/user';
 
-const token = localStorage.getItem('token');
-const headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-    token
-});
-
 @Injectable({
     providedIn: 'root'
 })
