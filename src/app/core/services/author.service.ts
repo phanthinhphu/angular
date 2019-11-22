@@ -5,8 +5,6 @@ import { Author } from '../models/author.model';
 import { domain } from '../config';
 
 const URL = domain + '/author';
-const token = localStorage.getItem('token');
-const headers = new HttpHeaders({ token });
 
 @Injectable({
     providedIn: 'root'
