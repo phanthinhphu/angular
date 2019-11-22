@@ -9,7 +9,7 @@
                     [matDatepicker]="pickerStart" 
                     placeholder="Choose a start date" 
                     formControlName="startDate"
-                    [min] = 'minDate'
+                    [min] = 'toDay'
                     (dateInput)='onChangeStartDate()'
                     (datechange) = 'onChangeStartDate()'
                 >
@@ -71,7 +71,9 @@
 
             <input type="text" 
             class="form-control"   
-            formControlName="note">
+            formControlName="note"
+            (change)='a()'
+            >
 
         </div>
 

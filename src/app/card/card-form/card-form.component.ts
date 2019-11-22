@@ -124,6 +124,10 @@ export class CardFormComponent implements OnInit {
     this.endDate.setValue(minDate);
   }
 
+  a(){
+    console.log(this.cardForm)
+  }
+
   get startDate() { return this.cardForm.get('startDate') };
   get endDate() { return this.cardForm.get('endDate') };
   get note() { return this.cardForm.get('note') };
