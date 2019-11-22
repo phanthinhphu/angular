@@ -9,7 +9,7 @@
                     [matDatepicker]="pickerStart" 
                     placeholder="Choose a start date" 
                     formControlName="startDate"
-                    [min] = 'increteDay'
+                    [min] = 'tomorrow'
                     (dateInput)='onChangeStartDate()'
                     (datechange) = 'onChangeStartDate()'
                 >
